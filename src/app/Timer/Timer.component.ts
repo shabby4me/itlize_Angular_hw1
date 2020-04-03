@@ -10,12 +10,25 @@ import { Component, OnInit } from "@angular/core";
 export class Timer implements OnInit {
     ngOnInit(): void {
         this.run();
+        let date = new Date();
+
+        this.sec = date.getSeconds();
+        this.min = date.getMinutes();
+        
+        if (date.getHours() >=12){
+            this.isAM = false;
+            this.hour = date.getHours()-12;
+        }else{
+            this.hour = date.getHours();
+        }
+        
+
     }
 
-    isAM = true;
-    sec:number = 0;
-    min:number = 0;
-    hour:number = 0;
+    isAM:boolean ;
+    sec:number ;
+    min:number ;
+    hour:number ;
 
     secSelected = false;
     minSelected = false;
