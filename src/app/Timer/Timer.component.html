@@ -1,0 +1,24 @@
+<div style = "border:solid; border-width:5px; text-align: center; width:150px" >
+    <div>London Time</div>
+    <div>
+        <input *ngIf="hourSelected" type='text' [(ngModel)]="hour" (keydown)="onKeydown($event)" myAutoFocus/>
+        <span *ngIf="!hourSelected" (click)='stopTicking(1)'>
+            {{hour}}
+        </span>
+        :
+        <input *ngIf="minSelected" type='text' [(ngModel)]="min" (keydown)="onKeydown($event)" myAutoFocus/>
+        <span *ngIf="!minSelected" (click)='stopTicking(2)'>
+            {{min}}
+        </span>
+        :
+        <input *ngIf="secSelected" type='text' [(ngModel)]="sec" (keydown)="onKeydown($event)" myAutoFocus/>
+        <span *ngIf="!secSelected" (click)='stopTicking(3)'>
+            {{sec}}
+        </span>
+        
+        <span>{{isAM?'AM':"PM"}}</span>
+    </div>
+    <button *ngIf="hourSelected||minSelected||secSelected" (click)="goOnTicking()">
+        Run!
+    </button>
+</div>
